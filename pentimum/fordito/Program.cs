@@ -15,7 +15,7 @@ namespace fordito
             string bytekod ="";
             string keszbytekod = "";
             int sorszamlalo=0;
-            int byteszamlalo = 925;
+            int byteszamlalo = 0;
             using (StreamReader sr = new StreamReader("1pelda.txt"))
             {
                 while (!sr.EndOfStream)
