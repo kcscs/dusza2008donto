@@ -29,6 +29,9 @@ namespace pentimum
         }
 
         public static string Dec2Hex(int dec) {
+            if (dec == 0)
+                return "0";
+
             StringBuilder sb = new StringBuilder();
             int helyiErtek = 16;
             int m;
