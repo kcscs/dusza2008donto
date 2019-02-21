@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pentimum
 {
-    static class Eszkozok
+    public static class Eszkozok
     {
         public static int Hex2Dec(string hex) {
             int helyiErtek = 1;
