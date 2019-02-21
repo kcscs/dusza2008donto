@@ -1,0 +1,40 @@
+# A-tol Z-ig porgeti a betuket
+# 64
+MOV [28] $41
+# 68
+ADD [28] $1
+# 6C
+WAIT
+# 6D
+WAIT
+# 6E
+WAIT
+# 6F
+MOV [200] [28]
+# 74
+SUB [200] $5A
+# 78
+JC 68
+# Z-tol A-ig porgeti a betuket
+# 7B
+MOV [201] $1
+# 7F
+MOV [202] $BF
+# 83
+SUB [28] [201]
+# 88
+WAIT
+# 89
+WAIT
+# 8A
+WAIT
+# 8B
+MOV [200] [28]
+# 90
+ADD [200] [202]
+# 95
+JZ 9B
+# 98
+JMP 83
+# 9B
+END
