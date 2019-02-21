@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using pentimum;
 
 namespace fordito
 {
@@ -16,6 +17,7 @@ namespace fordito
             string keszbytekod = "";
             int sorszamlalo=0;
             int byteszamlalo = 0;
+            int cim = 0;
             using (StreamReader sr = new StreamReader("1pelda.txt"))
             {
                 while (!sr.EndOfStream)
@@ -65,6 +67,7 @@ namespace fordito
                                         goto Kilep;
 
                                     }
+
 
 
                                 }
