@@ -14,16 +14,15 @@ namespace fordito
             List<string> sorelemek = new List<string>();
             string bytekod ="";
             string keszbytekod = "";
-            int szam = 0;
-            string valami="";
-            StackFrame s = new StackFrame(1, true);
-            int line = s.GetFileLineNumber();
+            int sorszamlalo=0;
+            int byteszamlalo = 0;
             using (StreamReader sr = new StreamReader("1pelda.txt"))
             {
-                while (!sr.EndOfStream||szam==0)
+                while (!sr.EndOfStream)
                 {
                     
                     string sor = sr.ReadLine();
+                    sorszamlalo++;
                     sorelemek=new List<string>();
                     if(sor[0]!='#')
                     {
@@ -57,6 +56,15 @@ namespace fordito
                                     }
 
                                     bytekod = bytekod + "01 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + "\r\n";
+                                    byteszamlalo = byteszamlalo + 4;
+
+                                    if(byteszamlalo>924)
+                                    {
+                                        Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                        bytekod = "";
+                                        goto Kilep;
+
+                                    }
 
 
                                 }
@@ -81,6 +89,14 @@ namespace fordito
                                     }
 
                                     bytekod = bytekod + "00 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + " " + elemek[2][2] + elemek[2][3] + "\r\n";
+                                    byteszamlalo = byteszamlalo + 5;
+                                    if (byteszamlalo > 924)
+                                    {
+                                        Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                        bytekod = "";
+                                        goto Kilep;
+
+                                    }
 
 
                                 }
@@ -106,6 +122,14 @@ namespace fordito
                                     }
 
                                     bytekod = bytekod + "03 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + "\r\n";
+                                    byteszamlalo = byteszamlalo + 4;
+                                    if (byteszamlalo > 924)
+                                    {
+                                        Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                        bytekod = "";
+                                        goto Kilep;
+
+                                    }
 
                                 }
                                 else // Ha nem $-es ADD
@@ -128,6 +152,14 @@ namespace fordito
                                     }
 
                                     bytekod = bytekod + "02 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + " " + elemek[2][2] + elemek[2][3] + "\r\n";
+                                    byteszamlalo = byteszamlalo + 5;
+                                    if (byteszamlalo > 924)
+                                    {
+                                        Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                        bytekod = "";
+                                        goto Kilep;
+
+                                    }
                                 }
                                 break;
 
@@ -152,6 +184,14 @@ namespace fordito
                                     }
 
                                     bytekod = bytekod + "04 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + "\r\n";
+                                    byteszamlalo = byteszamlalo + 4;
+                                    if (byteszamlalo > 924)
+                                    {
+                                        Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                        bytekod = "";
+                                        goto Kilep;
+
+                                    }
 
                                 }
                                 else // Ha nem $-es SUB
@@ -174,6 +214,14 @@ namespace fordito
                                     }
 
                                     bytekod = bytekod + "05 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + " " + elemek[2][2] + elemek[2][3] + "\r\n";
+                                    byteszamlalo = byteszamlalo + 5;
+                                    if (byteszamlalo > 924)
+                                    {
+                                        Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                        bytekod = "";
+                                        goto Kilep;
+
+                                    }
                                 }
                                 break;
 
@@ -184,6 +232,14 @@ namespace fordito
                                     elemek[1] = "0" + elemek[1];
                                 }
                                 bytekod = bytekod + "06 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + "\r\n";
+                                byteszamlalo = byteszamlalo + 3;
+                                if (byteszamlalo > 924)
+                                {
+                                    Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                    bytekod = "";
+                                    goto Kilep;
+
+                                }
                                 break;
 
                             case "JZ":
@@ -193,6 +249,14 @@ namespace fordito
                                     elemek[1] = "0" + elemek[1];
                                 }
                                 bytekod = bytekod + "07 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + "\r\n";
+                                byteszamlalo = byteszamlalo + 3;
+                                if (byteszamlalo > 924)
+                                {
+                                    Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                    bytekod = "";
+                                    goto Kilep;
+
+                                }
                                 break;
 
                             case "JC":
@@ -202,29 +266,51 @@ namespace fordito
                                     elemek[1] = "0" + elemek[1];
                                 }
                                 bytekod = bytekod + "08 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + "\r\n";
+                                byteszamlalo = byteszamlalo + 3;
+                                if (byteszamlalo > 924)
+                                {
+                                    Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                    bytekod = "";
+                                    goto Kilep;
+
+                                }
                                 break;
 
                             case "WAIT":
                                 bytekod = bytekod + "09 \r\n";
+                                byteszamlalo = byteszamlalo + 1;
+                                if (byteszamlalo > 924)
+                                {
+                                    Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                    bytekod = "";
+                                    goto Kilep;
+
+                                }
                                 break;
 
                             case "END":
+                                byteszamlalo = byteszamlalo + 1;
+                                if (byteszamlalo > 924)
+                                {
+                                    Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
+                                    bytekod = "";
+                                    goto Kilep;
+
+                                }
                                 bytekod = bytekod + "0A \r\n";
                                 break;
                             default:
-                                szam = 1;
-                                sr.Close();
-                                bytekod = "Szintaktikai hiba a {0}. sorban";
+                               bytekod = "Szintaktikai hiba a " + sorszamlalo + ". sorban";
+                               bytekod = "";
+                               goto Kilep;
                                 
-                                goto END;
-                                    break;
                         }
 
                     }
                 }
 
             }
-            END:
+            Kilep:
             keszbytekod = bytekod.Replace(" ", string.Empty);
             keszbytekod = keszbytekod.Replace("\r\n", string.Empty);
 
