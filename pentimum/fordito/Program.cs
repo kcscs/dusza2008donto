@@ -17,7 +17,8 @@ namespace fordito
             string keszbytekod = "";
             int sorszamlalo=0;
             int byteszamlalo = 0;
-            int cim = 0;
+            int atvaltott = 0;
+            int atvaltott2 = 0;
             using (StreamReader sr = new StreamReader("1pelda.txt"))
             {
                 while (!sr.EndOfStream)
@@ -26,9 +27,14 @@ namespace fordito
                     string sor = sr.ReadLine();
                     sorszamlalo++;
                     sorelemek=new List<string>();
-                    if(sor[0]!='#')
+                    if (sor == "")
+                    {
+                        
+                    }
+                    else if(sor[0]!='#')
                     {
                         string[] elemek =sor.Split(' ');
+                        
                         
                         
                         
@@ -60,6 +66,13 @@ namespace fordito
                                     bytekod = bytekod + "01 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + "\r\n";
                                     byteszamlalo = byteszamlalo + 4;
 
+                                    atvaltott = Eszkozok.Hex2Dec(elemek[1]);
+                                    atvaltott2 = Eszkozok.Hex2Dec(elemek[2]);
+                                    if(atvaltott<0||atvaltott>1023||atvaltott2<0||atvaltott2>1023)
+                                    {
+                                        Console.WriteLine("Olyan memóriacímre történt a hivatkozás ami nem létezik!");
+                                        goto Kilep;
+                                    }
                                     if(byteszamlalo>924)
                                     {
                                         Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
@@ -67,6 +80,7 @@ namespace fordito
                                         goto Kilep;
 
                                     }
+                                    
 
 
 
@@ -93,6 +107,13 @@ namespace fordito
 
                                     bytekod = bytekod + "00 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + " " + elemek[2][2] + elemek[2][3] + "\r\n";
                                     byteszamlalo = byteszamlalo + 5;
+                                    atvaltott = Eszkozok.Hex2Dec(elemek[1]);
+                                    atvaltott2 = Eszkozok.Hex2Dec(elemek[2]);
+                                    if (atvaltott < 0 || atvaltott > 1023 || atvaltott2 < 0 || atvaltott2 > 1023)
+                                    {
+                                        Console.WriteLine("Olyan memóriacímre történt a hivatkozás ami nem létezik!");
+                                        goto Kilep;
+                                    }
                                     if (byteszamlalo > 924)
                                     {
                                         Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
@@ -100,7 +121,6 @@ namespace fordito
                                         goto Kilep;
 
                                     }
-
 
                                 }
                                 break;
@@ -126,6 +146,13 @@ namespace fordito
 
                                     bytekod = bytekod + "03 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + "\r\n";
                                     byteszamlalo = byteszamlalo + 4;
+                                    atvaltott = Eszkozok.Hex2Dec(elemek[1]);
+                                    atvaltott2 = Eszkozok.Hex2Dec(elemek[2]);
+                                    if (atvaltott < 0 || atvaltott > 1023 || atvaltott2 < 0 || atvaltott2 > 1023)
+                                    {
+                                        Console.WriteLine("Olyan memóriacímre történt a hivatkozás ami nem létezik!");
+                                        goto Kilep;
+                                    }
                                     if (byteszamlalo > 924)
                                     {
                                         Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
@@ -156,6 +183,13 @@ namespace fordito
 
                                     bytekod = bytekod + "02 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + " " + elemek[2][2] + elemek[2][3] + "\r\n";
                                     byteszamlalo = byteszamlalo + 5;
+                                    atvaltott = Eszkozok.Hex2Dec(elemek[1]);
+                                    atvaltott2 = Eszkozok.Hex2Dec(elemek[2]);
+                                    if (atvaltott < 0 || atvaltott > 1023 || atvaltott2 < 0 || atvaltott2 > 1023)
+                                    {
+                                        Console.WriteLine("Olyan memóriacímre történt a hivatkozás ami nem létezik!");
+                                        goto Kilep;
+                                    }
                                     if (byteszamlalo > 924)
                                     {
                                         Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
@@ -188,6 +222,13 @@ namespace fordito
 
                                     bytekod = bytekod + "04 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + "\r\n";
                                     byteszamlalo = byteszamlalo + 4;
+                                    atvaltott = Eszkozok.Hex2Dec(elemek[1]);
+                                    atvaltott2 = Eszkozok.Hex2Dec(elemek[2]);
+                                    if (atvaltott < 0 || atvaltott > 1023 || atvaltott2 < 0 || atvaltott2 > 1023)
+                                    {
+                                        Console.WriteLine("Olyan memóriacímre történt a hivatkozás ami nem létezik!");
+                                        goto Kilep;
+                                    }
                                     if (byteszamlalo > 924)
                                     {
                                         Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
@@ -218,6 +259,13 @@ namespace fordito
 
                                     bytekod = bytekod + "05 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + " " + elemek[2][0] + elemek[2][1] + " " + elemek[2][2] + elemek[2][3] + "\r\n";
                                     byteszamlalo = byteszamlalo + 5;
+                                    atvaltott = Eszkozok.Hex2Dec(elemek[1]);
+                                    atvaltott2 = Eszkozok.Hex2Dec(elemek[2]);
+                                    if (atvaltott < 0 || atvaltott > 1023 || atvaltott2 < 0 || atvaltott2 > 1023)
+                                    {
+                                        Console.WriteLine("Olyan memóriacímre történt a hivatkozás ami nem létezik!");
+                                        goto Kilep;
+                                    }
                                     if (byteszamlalo > 924)
                                     {
                                         Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
@@ -236,6 +284,12 @@ namespace fordito
                                 }
                                 bytekod = bytekod + "06 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + "\r\n";
                                 byteszamlalo = byteszamlalo + 3;
+                                atvaltott = Eszkozok.Hex2Dec(elemek[1]);
+                                if (atvaltott < 0 || atvaltott > 1023)
+                                {
+                                    Console.WriteLine("Olyan memóriacímre történt a hivatkozás ami nem létezik!");
+                                    goto Kilep;
+                                }
                                 if (byteszamlalo > 924)
                                 {
                                     Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
@@ -253,6 +307,12 @@ namespace fordito
                                 }
                                 bytekod = bytekod + "07 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + "\r\n";
                                 byteszamlalo = byteszamlalo + 3;
+                                atvaltott = Eszkozok.Hex2Dec(elemek[1]);
+                                if (atvaltott < 0 || atvaltott > 1023)
+                                {
+                                    Console.WriteLine("Olyan memóriacímre történt a hivatkozás ami nem létezik!");
+                                    goto Kilep;
+                                }
                                 if (byteszamlalo > 924)
                                 {
                                     Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
@@ -270,6 +330,12 @@ namespace fordito
                                 }
                                 bytekod = bytekod + "08 " + "0" + elemek[1][0] + " " + elemek[1][1] + elemek[1][2] + "\r\n";
                                 byteszamlalo = byteszamlalo + 3;
+                                atvaltott = Eszkozok.Hex2Dec(elemek[1]);
+                                if (atvaltott < 0 || atvaltott > 1023)
+                                {
+                                    Console.WriteLine("Olyan memóriacímre történt a hivatkozás ami nem létezik!");
+                                    goto Kilep;
+                                }
                                 if (byteszamlalo > 924)
                                 {
                                     Console.WriteLine("A program nem fér be a memóriába." + " Hiba a " + sorszamlalo + ". sorban");
@@ -289,6 +355,7 @@ namespace fordito
                                     goto Kilep;
 
                                 }
+
                                 break;
 
                             case "END":
@@ -304,7 +371,6 @@ namespace fordito
                                 break;
                             default:
                                bytekod = "Szintaktikai hiba a " + sorszamlalo + ". sorban";
-                               bytekod = "";
                                goto Kilep;
                                 
                         }
@@ -318,7 +384,7 @@ namespace fordito
             keszbytekod = keszbytekod.Replace("\r\n", string.Empty);
 
             Console.WriteLine(bytekod);
-            //Console.Write(keszbytekod);
+            Console.Write(keszbytekod);
             using (StreamWriter sw = new StreamWriter("2bytekod.txt"))
             {
                 sw.Write(bytekod);
